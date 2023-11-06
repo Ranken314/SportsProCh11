@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\james\\OneDrive\\Desktop\\SportsProCh9\\SportsPro\\SportsPro.csproj": {}
+    "C:\\Users\\james\\OneDrive\\Desktop\\SportsProCh11\\SportsPro\\SportsPro.csproj": {}
   },
   "projects": {
-    "C:\\Users\\james\\OneDrive\\Desktop\\SportsProCh9\\SportsPro\\SportsPro.csproj": {
+    "C:\\Users\\james\\OneDrive\\Desktop\\SportsProCh11\\SportsPro\\SportsPro.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\james\\OneDrive\\Desktop\\SportsProCh9\\SportsPro\\SportsPro.csproj",
+        "projectUniqueName": "C:\\Users\\james\\OneDrive\\Desktop\\SportsProCh11\\SportsPro\\SportsPro.csproj",
         "projectName": "SportsPro",
-        "projectPath": "C:\\Users\\james\\OneDrive\\Desktop\\SportsProCh9\\SportsPro\\SportsPro.csproj",
+        "projectPath": "C:\\Users\\james\\OneDrive\\Desktop\\SportsProCh11\\SportsPro\\SportsPro.csproj",
         "packagesPath": "C:\\Users\\james\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\james\\OneDrive\\Desktop\\SportsProCh9\\SportsPro\\obj\\",
+        "outputPath": "C:\\Users\\james\\OneDrive\\Desktop\\SportsProCh11\\SportsPro\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -45,15 +45,19 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[7.0.13, )"
+              "version": "[7.0.11, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.13, )"
+              "version": "[7.0.11, )"
             }
           },
           "imports": [
