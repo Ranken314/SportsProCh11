@@ -1,0 +1,19 @@
+﻿@model Technician
+
+@{
+    ViewBag.Title = "Get A Technician";
+}
+
+<h1>Technician</h1>
+
+<form asp-action="List" method="post">
+    <select asp-for="TechnicianID" class="form-control">
+        <option value="0">Select A Technician</option>
+        @foreach(Technician t in ViewBag.Technician)
+        {
+            <option value="@t.TechnicianID">@t.TechnicianName</option>
+        }
+    </select>
+
+    <button type="submit"class="btn btn-primary mt-2">Select</button>
+</form>
