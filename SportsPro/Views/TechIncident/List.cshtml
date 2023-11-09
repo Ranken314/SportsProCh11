@@ -1,5 +1,4 @@
-﻿@using SportsPro.Models.ViewModels;
-@model TechIncidentViewModel
+﻿@model TechIncidentViewModel
 
 @{
     ViewBag.Title = "List Incidents for Technician";
@@ -31,7 +30,7 @@ if(Model.Incidents.Count > 0)
                 <td>
                     <a asp-action="Edit"
                         asp-route-id="@incident.IncidentID"
-                        class="btn btn-primary">Add</a>
+                        class="btn btn-primary">Edit</a>
                 </td>
             </tr>
         }

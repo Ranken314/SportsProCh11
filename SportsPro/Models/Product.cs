@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SportsPro.Models
@@ -13,9 +15,13 @@ namespace SportsPro.Models
         [Required]
         public string ProductName { get; set; } = string.Empty;
 
-        [Range(1, 1000000)]
+        [Range(0, 1000000)]
         [Column(TypeName = "decimal(8, 2)")]
         public decimal YearlyPrice { get; set; }
         public DateTime ReleaseDate { get; set; } = DateTime.Now;
+        
+        // navigation property to linking entity
+        public ICollection<Registration>? Registrations { get; set; }
+
     }
 }

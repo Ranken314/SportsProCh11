@@ -27,7 +27,9 @@ namespace SportsPro.Controllers
         public IActionResult Add()
         {
             ViewBag.Action = "Add";
+
             ViewBag.Countries = Context.Countries.ToList();
+
             return View("AddEdit", new Customer());
         }
 
@@ -39,7 +41,6 @@ namespace SportsPro.Controllers
             ViewBag.Countries = Context.Countries.ToList();
 
             var customer = Context.Customers.Find(id);
-
             return View("AddEdit", customer);
         }
 
@@ -63,7 +64,7 @@ namespace SportsPro.Controllers
             }
             if (ModelState.IsValid)
             {
-                if (ViewBag.Action == "Add")
+                if (customer.CustomerID == 0)
                 {
                     Context.Customers.Add(customer);
                 }

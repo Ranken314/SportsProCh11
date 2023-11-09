@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SportsPro.Models;
-using SportsPro.Models.ViewModels;
 
 namespace SportsPro.Controllers
 {
@@ -17,7 +16,7 @@ namespace SportsPro.Controllers
         public IActionResult Get()
         {
             ViewBag.Technicians = Context.Technicians
-                                    .OrderBy(t => t.TechnicianName)
+                                    .OrderBy(c => c.TechnicianName)
                                     .ToList();
 
             int? techID = HttpContext.Session.GetInt32("techID");
@@ -33,6 +32,22 @@ namespace SportsPro.Controllers
                                     .FirstOrDefault();
             }
             return View(technician);
+        }
+
+        [HttpPost]
+        public IActionResult List(Technician technician)
+        {
+            HttpContext.Session.SetInt32("techID", technician.TechnicianID);
+
+            if(technician.TechnicianID == 0)
+            {
+                TempData["message"] = "You must select a technician.";
+                return RedirectToAction("Get");
+            }
+            else
+            {
+                return RedirectToAction("List", new {id = technician.TechnicianID});
+            }
         }
 
         [HttpGet]
@@ -53,27 +68,10 @@ namespace SportsPro.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        public IActionResult List(Technician technician)
-        {
-            HttpContext.Session.SetInt32("techID", technician.TechnicianID);
-
-            if(technician.TechnicianID == 0)
-            {
-                TempData["message"] = "You must select a technician.";
-                return RedirectToAction("Get");
-            }
-            else
-            {
-                return RedirectToAction("List", new {id = technician.TechnicianID});    
-            }
-        }
-
         [HttpGet]
         public IActionResult Edit(int id)
         {
             int? techID = HttpContext.Session.GetInt32("techID");
-
             var model = new TechIncidentViewModel
             {
                 Technician = Context.Technicians.Find(techID),
@@ -98,7 +96,8 @@ namespace SportsPro.Controllers
 
             int? techID = HttpContext.Session.GetInt32("techID");
 
-            return RedirectToAction("List", new {id = techID});
+            return RedirectToAction("List",
+                new {id = techID});
         }
     }
 }

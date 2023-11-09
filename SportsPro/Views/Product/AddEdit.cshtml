@@ -4,6 +4,12 @@
     string title = ViewBag.Action + "product";
 }
 
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+
 <h1>@ViewBag.Title</h1>
 
 <form asp-action="Save" method="post">

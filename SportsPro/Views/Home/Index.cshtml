@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Technicians";
 }
 
 <h1>SportsPro Technical Support</h1>
@@ -23,10 +23,12 @@
     <a asp-controller="Incident" asp-action="List"
        class="list-group-item">Manage Incidents</a>
 
+    <a asp-controller="Registration" asp-action="GetCustomer"
+       class="list-group-item">Manage Registrations</a>
 </div>
 
 <h2>Technicians</h2>
-<div class="list">
-    <a asp-controller="Incident" asp-action="ListByTech"
+<div class="list-group">
+    <a asp-controller="TechIncident" asp-action="Get"
        class="list-group-item ">Update Incident</a>
 </div>
