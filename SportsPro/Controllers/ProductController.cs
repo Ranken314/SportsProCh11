@@ -80,11 +80,12 @@ namespace SportsPro.Controllers
         [HttpPost]
         public IActionResult Delete(Product product)
         {
+            string message;
 
-            var p = Context.Products.Find(product.ProductID);
+            message = product.ProductName + " was deleted.";
+            TempData["message"] = message;
             Context.Products.Remove(product);
             Context.SaveChanges();
-            TempData["message"] = p.ProductName + " was deleted.";
             return RedirectToAction("List");
         }
 

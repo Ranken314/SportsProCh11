@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
+using SportsPro.Models;
+using System.Diagnostics;
 
 namespace SportsPro.Controllers
 {

@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using SportsPro.Models;
 
 namespace SportsPro.Controllers
@@ -27,9 +26,7 @@ namespace SportsPro.Controllers
         public IActionResult Add()
         {
             ViewBag.Action = "Add";
-
             ViewBag.Countries = Context.Countries.ToList();
-
             return View("AddEdit", new Customer());
         }
 
@@ -41,30 +38,25 @@ namespace SportsPro.Controllers
             ViewBag.Countries = Context.Countries.ToList();
 
             var customer = Context.Customers.Find(id);
+
             return View("AddEdit", customer);
         }
 
         [HttpPost]
         public IActionResult Save(Customer customer)
         {
-            if(customer.CountryID == "XX")
+            if(customer.CustomerID == 0)
             {
-                ModelState.AddModelError(nameof(Customer.CountryID), "Required.");
+                ViewBag.Action = "Add";
+            }
+            else
+            {
+                ViewBag.Action = "Edit";
             }
 
-            if (customer.CustomerID == 0 && TempData["okEmail"] == null)
-            {
-                string msg = Check.EmailExists(Context, customer.Email);
-
-                if (!string.IsNullOrEmpty(msg))
-                {
-                    ModelState.AddModelError(nameof(Customer.Email), msg);
-                }
-
-            }
             if (ModelState.IsValid)
             {
-                if (customer.CustomerID == 0)
+                if (ViewBag.Action == "Add")
                 {
                     Context.Customers.Add(customer);
                 }
@@ -78,14 +70,7 @@ namespace SportsPro.Controllers
             }
             else
             {
-                if (customer.CustomerID == 0)
-                {
-                    ViewBag.Action = "Add";
-                }
-                else
-                {
-                    ViewBag.Action = "EDit";
-                }
+                ViewBag.Countries = Context.Countries.ToList();
                 return View("AddEdit", customer);
             }
         }

@@ -22,53 +22,55 @@
 
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-            <a class="navbar-brand" href="/">SportsPro</a>
-            <button class="navbar-toggler" type="button"
-               data-toggle="collapse" data-target="#navbatSupportedContent"  @* Top navBar in blue*@
-                aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <nav class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div class="navbar-nav mr-auto">
-                    <a class="nav-item nav-link @(controller == "Home" && action == "Index" ? "active" : "")" 
-                      asp-controller="Home" asp-action="Index">Home</a>
-                    <a class="nav-item nav-link @(controller == "Product" ? "active" : "")"
-                       asp-controller="Product" asp-action="List"> Product</a>
-                    <a class="nav-item nav-link @(controller == "Technician" ? "active" : "")"
-                       asp-controller="Technician" asp-action="List">Technician</a>
-                    <a class="nav-item nav-link @(controller == "Customer" ? "active" : "")"
-                       asp-controller="Customer" asp-action="List">Customer</a>
-                    <a class="nav-item nav-link @(controller == "Incident" ? "active" : "")"
-                       asp-controller="Incident" asp-action="List">Incident</a>
-                    <a class="nav-item nav-link @(controller == "Registration" ? "active" : "")"
-                       asp-controller="Registration" asp-action="GetCustomer">Registration</a>
-                </div>
+    <div class="container border border-primary">
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+                <a class="navbar-brand m-2" href="/">SportsPro</a>
+                <button class="navbar-toggler" type="button"
+                   data-toggle="collapse" data-target="#navbatSupportedContent"  @* Top navBar in blue*@
+                    aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <nav class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="navbar-nav mr-auto">
+                        <a class="nav-item nav-link @(controller == "Home" && action == "Index" ? "active" : "")" 
+                          asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-item nav-link @(controller == "Product" ? "active" : "")"
+                           asp-controller="Product" asp-action="List"> Product</a>
+                        <a class="nav-item nav-link @(controller == "Technician" ? "active" : "")"
+                           asp-controller="Technician" asp-action="List">Technician</a>
+                        <a class="nav-item nav-link @(controller == "Customer" ? "active" : "")"
+                           asp-controller="Customer" asp-action="List">Customer</a>
+                        <a class="nav-item nav-link @(controller == "Incident" ? "active" : "")"
+                           asp-controller="Incident" asp-action="List">Incident</a>
+                        <a class="nav-item nav-link @(controller == "Registration" ? "active" : "")"
+                           asp-controller="Registration" asp-action="GetCustomer">Registration</a>
+                    </div>
 
-                <div class="navbar-nav navbar-right">
-                    <a class="nav-item nav-link @(controller == "About" && action == "Index" ? "active" : "")"
-                       asp-controller="Home" asp-action="About">About</a>
-                </div>
+                    <div class="navbar-nav ms-auto m-2">
+                        <a class="nav-item nav-link @(controller == "About" && action == "Index" ? "active" : "")"
+                           asp-controller="Home" asp-action="About">About</a>
+                    </div>
+                </nav>
             </nav>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-5">
-            @if (TempData.Keys.Contains("message"))
-            {
-                <h4 class="bg-success p-2">@TempData["message"]</h4>
-            }
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
+        </header>
         <div class="container">
-            &copy; James R Wiley @DateTime.Now.Year - SportsPro
+            <main role="main" class="pb-5">
+                @if (TempData.Keys.Contains("message"))
+                {
+                    <h2 class="bg-info text-white text-center p-2 mt-2 rounded">@TempData["message"]</h2>
+                }
+                @RenderBody()
+            </main>
         </div>
-    </footer>
-    @await RenderSectionAsync("Scripts", required: false)
+
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; James R Wiley @DateTime.Now.Year - SportsPro
+            </div>
+        </footer>
+        @await RenderSectionAsync("Scripts", required: false)
+    </div>
 </body>
 </html>

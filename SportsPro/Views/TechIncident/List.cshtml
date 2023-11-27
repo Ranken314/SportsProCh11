@@ -1,13 +1,14 @@
-﻿@model TechIncidentViewModel
+﻿@using SportsPro.Models.ViewModels
+@model TechIncidentViewModel;
 
 @{
-    ViewBag.Title = "List Incidents for Technician";
+    ViewBag.Title = "List Incident for Technician";
 }
 
 <h1>Technician: @Model.Technician?.TechnicianName</h1>
-<h2>Assigned/Open Incidents</h2>
+<h1>Assigned/Open Incident</h1>
 
-if(Model.Incidents.Count > 0)
+if(Model.Incident.Count > 0)
 {
     <table class="table table-bordered table-striped">
         <thead>
@@ -15,7 +16,7 @@ if(Model.Incidents.Count > 0)
                 <th>Title</th>
                 <th>Customer</th>
                 <th>Product</th>
-                <th>Date Opened</th>
+                <th>Data Opened</th>
                 <th></th>
             </tr>
         </thead>
@@ -30,7 +31,7 @@ if(Model.Incidents.Count > 0)
                 <td>
                     <a asp-action="Edit"
                         asp-route-id="@incident.IncidentID"
-                        class="btn btn-primary">Edit</a>
+                        class="btn btn-primary">Add</a>
                 </td>
             </tr>
         }
@@ -39,7 +40,7 @@ if(Model.Incidents.Count > 0)
 }
 else
 {
-    <p>The selected technician has no open incident</p>
-}
+    <p>The selected Technician has no open incident.</p>
 
+}
 <a asp-action="Get" class="btn btn-primary">Switch Technician</a>

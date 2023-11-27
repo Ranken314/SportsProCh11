@@ -8,16 +8,20 @@ namespace SportsPro.Models
         public int IncidentID { get; set; }
 
         [Required]
-        public int CustomerID { get; set; }  // foreign key property
+        public int CustomerID { get; set; }
 
-        public Customer? Customer { get; set; } // navigation property
+        [ValidateNever]
+        public Customer Customer { get; set; }
 
         [Required]
-        public int ProductID { get; set; }  // foreign key property
-        public Product? Product { get; set; } // navigation property
+        public int ProductID { get; set; }
 
-        public int? TechnicianID { get; set; }  // foreign key property
-        public Technician? Technician { get; set; }  // navigation property
+        [ValidateNever]
+        public Product Product { get; set; }
+        public int? TechnicianID { get; set; }
+
+        [ValidateNever]
+        public Technician? Technician { get; set; }
 
         [Required]
         public string Title { get; set; } = string.Empty;

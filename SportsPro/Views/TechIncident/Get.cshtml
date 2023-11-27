@@ -8,12 +8,12 @@
 
 <form asp-action="List" method="post">
     <select asp-for="TechnicianID" class="form-control">
-        <option value="0">Select A Technician</option>
-        @foreach(Technician t in ViewBag.Technician)
+        <option value="0">Select A Techinian</option>
+        @foreach(Technician t in ViewBag.Techicians)
         {
-            <option value="@t.TechnicianID">@t.TechnicianName</option>
+            <option value="@t.TechnicianID"></option>
         }
     </select>
 
-    <button type="submit"class="btn btn-primary mt-2">Select</button>
+    <button type="submit" class="btn btn-primary mt-2">Select</button>
 </form>
